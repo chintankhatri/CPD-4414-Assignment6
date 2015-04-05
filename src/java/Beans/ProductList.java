@@ -54,31 +54,7 @@ public class ProductList {
     }
     
     
-    public void add(Product product) {
-
-        newService.add(product.toJSON());
-        productList.add(product);
-
-    }
-
-    public void remove(Product product) {
-
-        int id = product.productID;
-        newService.deleteById(String.valueOf(id));
-        productList.remove(product);
-
-    }
-
-    public void remove(int id) {
-
-        newService.deleteById(String.valueOf(id));
-
-    }
-
-    public void set(int id, Product product) {
-        newService.updateData(String.valueOf(id), product.toJSON());
-
-    }
+ 
 
     
     
