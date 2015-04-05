@@ -20,7 +20,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
-
 /**
  *
  * @author chintan
@@ -77,9 +76,8 @@ public class Chintan {
             JsonArrayBuilder array = Json.createArrayBuilder();
             while (results.next()) {
                 array.add(Json.createObjectBuilder()
-                        
                         .add("name", results.getString("name"))
-                        .add("description",results.getString("description"))
+                        .add("description", results.getString("description"))
                         .add("quantity", results.getString("quantity"))
                 );
             }
@@ -101,14 +99,15 @@ public class Chintan {
         }
 
     }
+
     @PUT
     @Path("{id}")
-    public Response updateOne(@PathParam("id") String id, JsonObject json){
-    
+    public Response updateOne(@PathParam("id") String id, JsonObject json) {
+
         String name = json.getString("name");
         String description = json.getString("description");
         String quantity = String.valueOf(json.getInt("quantity"));
-      int result = doUpdate("update product set name=?,description=?,quantity=? where productid=?", name,description,quantity,id);
+        int result = doUpdate("update product set name=?,description=?,quantity=? where productid=?", name, description, quantity, id);
         if (result <= 0) {
             return Response.status(500).build();
         } else {
